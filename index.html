@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEO-VAR // FIFA & IFAB Next-Gen Officiating Protocol</title>
+  <!-- Google Fonts for futuristic, readable typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Orbitron:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top HUD Bar -->
+    <header class="hud-header">
+      <div class="logo-area">
+        <span class="pulse-indicator status-online"></span>
+        <div class="logo-text">
+          <h1>NEO-VAR</h1>
+          <span class="sub-logo">SYSTEM STATUS: CALIBRATED & ACTIVE</span>
+        </div>
+      </div>
+      <div class="match-info">
+        <div class="match-teams">
+          <span class="team-tag home-team">MUN</span>
+          <span class="vs">VS</span>
+          <span class="team-tag away-team">ARS</span>
+        </div>
+        <div class="match-time">
+          <span class="time-elapsed">87:14</span>
+          <span class="half-indicator">2ND HALF</span>
+        </div>
+      </div>
+      <div class="system-stats">
+        <div class="stat-box">
+          <span class="stat-label">CAM SYNC</span>
+          <span class="stat-value text-green">100% (60FPS)</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">IMU BALL TELEMETRY</span>
+          <span class="stat-value text-green">500Hz ONLINE</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">INTEGRITY LOCK</span>
+          <span class="stat-value text-gold" id="integrity-hash">SHA256: F38A9...</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-layout">
+      <!-- Left Column: Synchronized Cameras and Controls -->
+      <section class="visuals-section">
+        <div class="camera-grid">
+          <!-- Cam 1: Tactical View -->
+          <div class="camera-card" id="cam-card-1">
+            <div class="camera-header">
+              <span class="cam-id">CAM-01 // TACTICAL HIGH WIDE</span>
+              <span class="cam-telemetry" id="cam-tele-1">CALIBRATED</span>
+            </div>
+            <div class="canvas-container">
+              <canvas id="canvas-cam-1"></canvas>
+            </div>
+          </div>
+
+          <!-- Cam 2: Skeletal Mesh -->
+          <div class="camera-card" id="cam-card-2">
+            <div class="camera-header">
+              <span class="cam-id">CAM-02 // SKELETAL PLAYER TRACKING</span>
+              <span class="cam-telemetry" id="cam-tele-2">22 BODIES RENDERED</span>
+            </div>
+            <div class="canvas-container">
+              <canvas id="canvas-cam-2"></canvas>
+            </div>
+          </div>
+
+          <!-- Cam 3: Hawk-Eye Offside Line / Contact Force -->
+          <div class="camera-card" id="cam-card-3">
+            <div class="camera-header">
+              <span class="cam-id" id="cam-title-3">CAM-03 // 3D OFFSIDE CALIBRATION</span>
+              <span class="cam-telemetry" id="cam-tele-3">MARGIN: +4.2cm</span>
+            </div>
+            <div class="canvas-container">
+              <canvas id="canvas-cam-3"></canvas>
+            </div>
+          </div>
+
+          <!-- Cam 4: Ball Telemetry / Goal Line -->
+          <div class="camera-card" id="cam-card-4">
+            <div class="camera-header">
+              <span class="cam-id" id="cam-title-4">CAM-04 // BALL TELEMETRY & GOAL-LINE</span>
+              <span class="cam-telemetry" id="cam-tele-4">IMU SENSOR CONNECTED</span>
+            </div>
+            <div class="canvas-container">
+              <canvas id="canvas-cam-4"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Playback Controls -->
+        <div class="controls-panel">
+          <div class="scrubber-row">
+            <input type="range" id="timeline-scrubber" min="0" max="100" value="0" step="1">
+            <div class="frame-indicators">
+              <span id="frame-current">FRAME 000</span>
+              <span class="separator">/</span>
+              <span id="frame-total">FRAME 100</span>
+            </div>
+          </div>
+          <div class="buttons-row">
+            <div class="playback-buttons">
+              <button id="btn-prev-frame" class="btn-control" title="Previous Frame (Left Arrow)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 17l-5-5 5-5M18 17l-5-5 5-5"/></svg>
+              </button>
+              <button id="btn-play-pause" class="btn-control btn-primary" title="Play / Pause (Spacebar)">
+                <svg id="play-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+                <svg id="pause-icon" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+              </button>
+              <button id="btn-next-frame" class="btn-control" title="Next Frame (Right Arrow)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 17l5-5-5-5M6 17l5-5-5-5"/></svg>
+              </button>
+            </div>
+            <div class="playback-speed">
+              <label for="speed-select">SPEED:</label>
+              <select id="speed-select" class="dropdown-control">
+                <option value="1">1.0x (Realtime)</option>
+                <option value="0.5">0.5x (Slow-Mo)</option>
+                <option value="0.25" selected>0.25x (Super Slow)</option>
+                <option value="0.1">0.1x (Precise)</option>
+              </select>
+            </div>
+            <div class="overlay-toggles">
+              <button id="btn-toggle-tracking" class="btn-toggle active" title="Toggle AI Overlays">
+                <span class="indicator-dot"></span> AI OVERLAYS
+              </button>
+              <button id="btn-toggle-zoomed" class="btn-toggle" title="Toggle Magnified Crop">
+                <span class="indicator-dot"></span> AUTO-ZOOM
+              </button>
+            </div>
+          </div>
+        </section>
+
+      <!-- Right Column: Command Center, Decision engine, Consistency -->
+      <section class="command-section">
+        <!-- Incident Simulator Controller -->
+        <div class="control-box incidents-box">
+          <h3>SELECT SIMULATED INCIDENT</h3>
+          <div class="incident-grid">
+            <button class="incident-tab active" data-incident="0">
+              <span class="tab-num">01</span>
+              <span class="tab-title">Tight Offside</span>
+              <span class="tab-desc">MUN vs ARS</span>
+            </button>
+            <button class="incident-tab" data-incident="1">
+              <span class="tab-num">02</span>
+              <span class="tab-title">Penalty Tackle</span>
+              <span class="tab-desc">RMA vs FCB</span>
+            </button>
+            <button class="incident-tab" data-incident="2">
+              <span class="tab-num">03</span>
+              <span class="tab-title">Goal-Line Check</span>
+              <span class="tab-desc">FCB vs BVB</span>
+            </button>
+            <button class="incident-tab" data-incident="3">
+              <span class="tab-num">04</span>
+              <span class="tab-title">Handball Check</span>
+              <span class="tab-desc">CHE vs LIV</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- AI Decision HUD -->
+        <div class="control-box decision-box">
+          <div class="decision-header">
+            <h3>AI DECISION ENGINE</h3>
+            <span class="badge" id="escalation-badge">AUTO-RESOLVED</span>
+          </div>
+
+          <div class="decision-output">
+            <div class="ruling-display">
+              <span class="label">CALCULATED RULING</span>
+              <div class="ruling-text text-red" id="decision-text">OFFSIDE</div>
+            </div>
+            <div class="confidence-display">
+              <span class="label">CONFIDENCE SCORE</span>
+              <div class="confidence-radial-container">
+                <div class="confidence-circle">
+                  <svg viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="42" class="bg-circle" />
+                    <circle cx="50" cy="50" r="42" class="fg-circle" id="confidence-circle-bar" />
+                  </svg>
+                  <div class="confidence-number" id="confidence-percent">99.8%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Explainer Reason Tree -->
+          <div class="decision-explainer">
+            <span class="label">DECISION SEQUENCE & RULES</span>
+            <ul class="reasoning-tree" id="reasoning-tree">
+              <!-- Dynamically populated -->
+            </ul>
+          </div>
+
+          <!-- Rule Link -->
+          <div class="rule-ref-box" id="rule-ref-box">
+            <div class="rule-ref-header">
+              <span class="rule-title" id="rule-title">Law 11 - Offside</span>
+              <a href="https://www.theifab.com/laws/latest/offside/" target="_blank" class="rule-link">IFAB LAWS OF THE GAME <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+            </div>
+            <p class="rule-text" id="rule-description">A player is in an offside position if any part of their head, torso, or feet is in the opponents' half (excluding the halfway line) and is nearer to the opponents' goal line than both the ball and the second-last opponent at the moment the ball is played.</p>
+          </div>
+        </div>
+
+        <!-- Automatic Consistency Matrix -->
+        <div class="control-box consistency-box">
+          <div class="consistency-header">
+            <h3>AUTOMATIC CONSISTENCY COMPARISON</h3>
+            <span class="tooltip-trigger" title="Scans global league databases for matches with matching physical signatures to ensure equal refereeing standard.">INFO</span>
+          </div>
+          <p class="section-desc">Identical matches in system database checking for precedent alignment:</p>
+          <div class="consistency-list" id="consistency-list">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Bottom Section: Publicly Auditable Ledger / Blockchain Log -->
+    <footer class="ledger-footer">
+      <div class="ledger-header">
+        <div class="ledger-title-group">
+          <span class="pulse-indicator pulse-blue"></span>
+          <h3>PUBLICLY AUDITABLE CRYPTOGRAPHIC DECISION LOG (IMMUTABLE LEDGER)</h3>
+        </div>
+        <div class="ledger-stats">
+          <span>CHAIN SYNCED: <strong class="text-green">BLOCK #849,102</strong></span>
+          <span class="separator">|</span>
+          <span>LEDGER STATUS: <strong class="text-green">VERIFIED SECURE</strong></span>
+        </div>
+      </div>
+      <div class="ledger-log-window" id="ledger-log-window">
+        <!-- Dynamically populated with transaction logs containing cryptographic hashes -->
+      </div>
+    </footer>
+  </div>
+  
+  <script src="app.js"></script>
+</body>
+</html>
