@@ -3,249 +3,820 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEO-VAR // FIFA & IFAB Next-Gen Officiating Protocol</title>
-  <!-- Google Fonts for futuristic, readable typography -->
+  <meta name="description" content="Hanish Aradhya G - Portfolio. Full-Stack Developer, UX Designer, and Creative Problem Solver. Premium interactive dark/light portfolio.">
+  <title>Hanish Aradhya G | Premium Portfolio</title>
+  
+  <!-- Preconnect and Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Orbitron:wght@400;600;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <div class="app-container">
-    <!-- Top HUD Bar -->
-    <header class="hud-header">
-      <div class="logo-area">
-        <span class="pulse-indicator status-online"></span>
-        <div class="logo-text">
-          <h1>NEO-VAR</h1>
-          <span class="sub-logo">SYSTEM STATUS: CALIBRATED & ACTIVE</span>
+<body class="dark-theme">
+  <!-- Custom Cursor Elements -->
+  <div class="custom-cursor-dot" id="cursor-dot"></div>
+  <div class="custom-cursor-circle" id="cursor-circle"></div>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- Fixed Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo" aria-label="Hanish Aradhya G Home">
+        <div class="logo-monogram">H</div>
+        <span class="logo-name">Aradhya</span>
+      </a>
+
+      <!-- Mobile Hamburger Menu Button -->
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <nav class="nav-links" id="nav-links">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Action items: Theme Toggle -->
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode">
+          <!-- Sun Icon (visible in Dark theme) -->
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <!-- Moon Icon (visible in Light theme) -->
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Hero Section -->
+    <section id="home" class="hero-section">
+      <div class="hero-background-gradient"></div>
+      <div class="container hero-container">
+        <div class="hero-content">
+          <span class="hero-badge reveal">Welcome to my space</span>
+          <h1 class="hero-title reveal">
+            Hi, I'm <span class="text-glow">Hanish Aradhya G</span>
+          </h1>
+          <h2 class="hero-subtitle reveal">
+            I am a <span class="typing-text" id="typing-text"></span><span class="typing-cursor">|</span>
+          </h2>
+          <p class="hero-description reveal">
+            Crafting state-of-the-art web experiences and scalable software architectures. Blending precise engineering with clean visual aesthetic to build responsive applications that make an impact.
+          </p>
+          <div class="hero-ctas reveal">
+            <a href="#projects" class="btn btn-primary custom-hover-trigger">
+              View Work
+              <svg class="btn-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+            <a href="#contact" class="btn btn-secondary custom-hover-trigger">Let's Connect</a>
+          </div>
+        </div>
+
+        <div class="hero-visual-container reveal">
+          <div class="glowing-monogram-container custom-hover-trigger">
+            <!-- Background floating glow blobs -->
+            <div class="glow-blob blob-1"></div>
+            <div class="glow-blob blob-2"></div>
+            
+            <!-- Animated Geometric SVG Constellation Monogram -->
+            <svg class="hero-svg-monogram" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+              <!-- Definitions for gradients -->
+              <defs>
+                <linearGradient id="glow-grad-indigo" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="var(--accent-indigo)" />
+                  <stop offset="100%" stop-color="var(--accent-teal)" />
+                </linearGradient>
+                <linearGradient id="glow-grad-teal" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="var(--accent-teal)" />
+                  <stop offset="100%" stop-color="var(--accent-indigo)" />
+                </linearGradient>
+                <filter id="glow-filter" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="12" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+
+              <!-- Outer Glowing Animated Ring -->
+              <circle class="ring-pulse" cx="200" cy="200" r="170" fill="none" stroke="url(#glow-grad-indigo)" stroke-width="2" stroke-dasharray="10 15 30 15" />
+              <circle class="ring-pulse-reverse" cx="200" cy="200" r="155" fill="none" stroke="url(#glow-grad-teal)" stroke-width="1.5" stroke-dasharray="5 5 10 20" />
+
+              <!-- Geometric Grid Lines (Hexagonal blueprint feel) -->
+              <polygon points="200,60 321,130 321,270 200,340 79,270 79,130" fill="none" stroke="var(--text-secondary)" stroke-width="0.5" stroke-opacity="0.15" />
+              <line x1="200" y1="60" x2="200" y2="340" stroke="var(--text-secondary)" stroke-width="0.5" stroke-opacity="0.15" />
+              <line x1="79" y1="130" x2="321" y2="270" stroke="var(--text-secondary)" stroke-width="0.5" stroke-opacity="0.15" />
+              <line x1="79" y1="270" x2="321" y2="130" stroke="var(--text-secondary)" stroke-width="0.5" stroke-opacity="0.15" />
+
+              <!-- Interactive Floating Node Circles -->
+              <circle class="floating-node node-1" cx="200" cy="60" r="4" fill="var(--accent-teal)" filter="url(#glow-filter)" />
+              <circle class="floating-node node-2" cx="321" cy="130" r="4" fill="var(--accent-indigo)" filter="url(#glow-filter)" />
+              <circle class="floating-node node-3" cx="321" cy="270" r="4" fill="var(--accent-teal)" filter="url(#glow-filter)" />
+              <circle class="floating-node node-4" cx="200" cy="340" r="4" fill="var(--accent-indigo)" filter="url(#glow-filter)" />
+              <circle class="floating-node node-5" cx="79" cy="270" r="4" fill="var(--accent-teal)" filter="url(#glow-filter)" />
+              <circle class="floating-node node-6" cx="79" cy="130" r="4" fill="var(--accent-indigo)" filter="url(#glow-filter)" />
+              
+              <!-- Monogram Typography Structure (Isometric styling) -->
+              <!-- "H" Shape -->
+              <path class="monogram-path" d="M120,130 L120,270 M120,200 L190,200 M190,130 L190,270" fill="none" stroke="url(#glow-grad-indigo)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+              <!-- "A" Shape -->
+              <path class="monogram-path delay-path" d="M220,270 L255,130 L290,270 M235,215 L275,215" fill="none" stroke="url(#glow-grad-teal)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
         </div>
       </div>
-      <div class="match-info">
-        <div class="match-teams">
-          <span class="team-tag home-team">MUN</span>
-          <span class="vs">VS</span>
-          <span class="team-tag away-team">ARS</span>
-        </div>
-        <div class="match-time">
-          <span class="time-elapsed">87:14</span>
-          <span class="half-indicator">2ND HALF</span>
-        </div>
-      </div>
-      <div class="system-stats">
-        <div class="stat-box">
-          <span class="stat-label">CAM SYNC</span>
-          <span class="stat-value text-green">100% (60FPS)</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-label">IMU BALL TELEMETRY</span>
-          <span class="stat-value text-green">500Hz ONLINE</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-label">INTEGRITY LOCK</span>
-          <span class="stat-value text-gold" id="integrity-hash">SHA256: F38A9...</span>
-        </div>
-      </div>
-    </header>
+      
+      <!-- Scroll Indicator Badge -->
+      <a href="#about" class="scroll-down-btn" aria-label="Scroll Down">
+        <span class="scroll-mouse">
+          <span class="scroll-wheel"></span>
+        </span>
+      </a>
+    </section>
 
-    <div class="main-layout">
-      <!-- Left Column: Synchronized Cameras and Controls -->
-      <section class="visuals-section">
-        <div class="camera-grid">
-          <!-- Cam 1: Tactical View -->
-          <div class="camera-card" id="cam-card-1">
-            <div class="camera-header">
-              <span class="cam-id">CAM-01 // TACTICAL HIGH WIDE</span>
-              <span class="cam-telemetry" id="cam-tele-1">CALIBRATED</span>
-            </div>
-            <div class="canvas-container">
-              <canvas id="canvas-cam-1"></canvas>
-            </div>
-          </div>
-
-          <!-- Cam 2: Skeletal Mesh -->
-          <div class="camera-card" id="cam-card-2">
-            <div class="camera-header">
-              <span class="cam-id">CAM-02 // SKELETAL PLAYER TRACKING</span>
-              <span class="cam-telemetry" id="cam-tele-2">22 BODIES RENDERED</span>
-            </div>
-            <div class="canvas-container">
-              <canvas id="canvas-cam-2"></canvas>
-            </div>
-          </div>
-
-          <!-- Cam 3: Hawk-Eye Offside Line / Contact Force -->
-          <div class="camera-card" id="cam-card-3">
-            <div class="camera-header">
-              <span class="cam-id" id="cam-title-3">CAM-03 // 3D OFFSIDE CALIBRATION</span>
-              <span class="cam-telemetry" id="cam-tele-3">MARGIN: +4.2cm</span>
-            </div>
-            <div class="canvas-container">
-              <canvas id="canvas-cam-3"></canvas>
-            </div>
-          </div>
-
-          <!-- Cam 4: Ball Telemetry / Goal Line -->
-          <div class="camera-card" id="cam-card-4">
-            <div class="camera-header">
-              <span class="cam-id" id="cam-title-4">CAM-04 // BALL TELEMETRY & GOAL-LINE</span>
-              <span class="cam-telemetry" id="cam-tele-4">IMU SENSOR CONNECTED</span>
-            </div>
-            <div class="canvas-container">
-              <canvas id="canvas-cam-4"></canvas>
-            </div>
-          </div>
+    <!-- 2. About Me Section -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">About Me</h2>
+          <div class="section-divider"></div>
+          <p class="section-subtitle">A glimpse into my mindset, background, and philosophy</p>
         </div>
 
-        <!-- Playback Controls -->
-        <div class="controls-panel">
-          <div class="scrubber-row">
-            <input type="range" id="timeline-scrubber" min="0" max="100" value="0" step="1">
-            <div class="frame-indicators">
-              <span id="frame-current">FRAME 000</span>
-              <span class="separator">/</span>
-              <span id="frame-total">FRAME 100</span>
-            </div>
-          </div>
-          <div class="buttons-row">
-            <div class="playback-buttons">
-              <button id="btn-prev-frame" class="btn-control" title="Previous Frame (Left Arrow)">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 17l-5-5 5-5M18 17l-5-5 5-5"/></svg>
-              </button>
-              <button id="btn-play-pause" class="btn-control btn-primary" title="Play / Pause (Spacebar)">
-                <svg id="play-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
-                <svg id="pause-icon" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-              </button>
-              <button id="btn-next-frame" class="btn-control" title="Next Frame (Right Arrow)">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 17l5-5-5-5M6 17l5-5-5-5"/></svg>
-              </button>
-            </div>
-            <div class="playback-speed">
-              <label for="speed-select">SPEED:</label>
-              <select id="speed-select" class="dropdown-control">
-                <option value="1">1.0x (Realtime)</option>
-                <option value="0.5">0.5x (Slow-Mo)</option>
-                <option value="0.25" selected>0.25x (Super Slow)</option>
-                <option value="0.1">0.1x (Precise)</option>
-              </select>
-            </div>
-            <div class="overlay-toggles">
-              <button id="btn-toggle-tracking" class="btn-toggle active" title="Toggle AI Overlays">
-                <span class="indicator-dot"></span> AI OVERLAYS
-              </button>
-              <button id="btn-toggle-zoomed" class="btn-toggle" title="Toggle Magnified Crop">
-                <span class="indicator-dot"></span> AUTO-ZOOM
-              </button>
-            </div>
-          </div>
-        </section>
+        <div class="about-grid">
+          <!-- Text column -->
+          <div class="about-bio-card reveal">
+            <h3 class="card-headline">Designing with purpose, coding with precision.</h3>
+            <p>
+              I am a software developer based in India, dedicated to engineering interfaces that are both highly performant and visually stunning. My philosophy is that user experience and technical scalability are not mutually exclusive, but rather complementary.
+            </p>
+            <p>
+              Whether structuring robust backend architectures or designing micro-interactions on the frontend, I focus on performance, writing highly structured, clean, and documentation-rich code. I spend my time refining developer experience and building products that make a difference.
+            </p>
 
-      <!-- Right Column: Command Center, Decision engine, Consistency -->
-      <section class="command-section">
-        <!-- Incident Simulator Controller -->
-        <div class="control-box incidents-box">
-          <h3>SELECT SIMULATED INCIDENT</h3>
-          <div class="incident-grid">
-            <button class="incident-tab active" data-incident="0">
-              <span class="tab-num">01</span>
-              <span class="tab-title">Tight Offside</span>
-              <span class="tab-desc">MUN vs ARS</span>
-            </button>
-            <button class="incident-tab" data-incident="1">
-              <span class="tab-num">02</span>
-              <span class="tab-title">Penalty Tackle</span>
-              <span class="tab-desc">RMA vs FCB</span>
-            </button>
-            <button class="incident-tab" data-incident="2">
-              <span class="tab-num">03</span>
-              <span class="tab-title">Goal-Line Check</span>
-              <span class="tab-desc">FCB vs BVB</span>
-            </button>
-            <button class="incident-tab" data-incident="3">
-              <span class="tab-num">04</span>
-              <span class="tab-title">Handball Check</span>
-              <span class="tab-desc">CHE vs LIV</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- AI Decision HUD -->
-        <div class="control-box decision-box">
-          <div class="decision-header">
-            <h3>AI DECISION ENGINE</h3>
-            <span class="badge" id="escalation-badge">AUTO-RESOLVED</span>
-          </div>
-
-          <div class="decision-output">
-            <div class="ruling-display">
-              <span class="label">CALCULATED RULING</span>
-              <div class="ruling-text text-red" id="decision-text">OFFSIDE</div>
-            </div>
-            <div class="confidence-display">
-              <span class="label">CONFIDENCE SCORE</span>
-              <div class="confidence-radial-container">
-                <div class="confidence-circle">
-                  <svg viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="42" class="bg-circle" />
-                    <circle cx="50" cy="50" r="42" class="fg-circle" id="confidence-circle-bar" />
-                  </svg>
-                  <div class="confidence-number" id="confidence-percent">99.8%</div>
-                </div>
+            <!-- Quick Stats -->
+            <div class="about-stats">
+              <div class="stat-item">
+                <span class="stat-num text-glow">15+</span>
+                <span class="stat-label">Projects Completed</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num text-glow">20+</span>
+                <span class="stat-label">Tech Tools Mastered</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num text-glow">99.9%</span>
+                <span class="stat-label">Code Reliability</span>
               </div>
             </div>
           </div>
 
-          <!-- Explainer Reason Tree -->
-          <div class="decision-explainer">
-            <span class="label">DECISION SEQUENCE & RULES</span>
-            <ul class="reasoning-tree" id="reasoning-tree">
-              <!-- Dynamically populated -->
-            </ul>
-          </div>
-
-          <!-- Rule Link -->
-          <div class="rule-ref-box" id="rule-ref-box">
-            <div class="rule-ref-header">
-              <span class="rule-title" id="rule-title">Law 11 - Offside</span>
-              <a href="https://www.theifab.com/laws/latest/offside/" target="_blank" class="rule-link">IFAB LAWS OF THE GAME <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+          <!-- Key Values Column (Grid of Cards) -->
+          <div class="about-values-grid">
+            <!-- Card 1 -->
+            <div class="value-card reveal custom-hover-trigger">
+              <div class="value-icon-wrapper text-teal">
+                <!-- Innovation Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
+                  <path d="M9 18h6"></path>
+                  <path d="M10 22h4"></path>
+                </svg>
+              </div>
+              <h4 class="value-title">Constant Innovation</h4>
+              <p class="value-desc">Exploring cutting-edge technologies to design scalable and futuristic solutions to real-world engineering hurdles.</p>
             </div>
-            <p class="rule-text" id="rule-description">A player is in an offside position if any part of their head, torso, or feet is in the opponents' half (excluding the halfway line) and is nearer to the opponents' goal line than both the ball and the second-last opponent at the moment the ball is played.</p>
+
+            <!-- Card 2 -->
+            <div class="value-card reveal custom-hover-trigger">
+              <div class="value-icon-wrapper text-indigo">
+                <!-- Scalability Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+                  <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+                  <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+                  <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+                </svg>
+              </div>
+              <h4 class="value-title">High Scalability</h4>
+              <p class="value-desc">Structuring applications with modular design patterns, optimized algorithms, and solid architectural principles.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="value-card reveal custom-hover-trigger">
+              <div class="value-icon-wrapper text-teal">
+                <!-- User-Centricity Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <h4 class="value-title">User Centricity</h4>
+              <p class="value-desc">Focussing on accessibility, intuitive flows, clean user interface design, and seamless interactions.</p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="value-card reveal custom-hover-trigger">
+              <div class="value-icon-wrapper text-indigo">
+                <!-- Clean Code Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                  <line x1="12" y1="4" x2="12" y2="20"></line>
+                </svg>
+              </div>
+              <h4 class="value-title">Technical Craft</h4>
+              <p class="value-desc">Strict adherence to clean code, comprehensive testing, type safety, and robust, maintainable patterns.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Skills Matrix Section -->
+    <section id="skills" class="skills-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">Skills Matrix</h2>
+          <div class="section-divider"></div>
+          <p class="section-subtitle">A look into my technical arsenal and tools that make ideas reality</p>
+        </div>
+
+        <!-- Category Tabs Control -->
+        <div class="skills-filter-container reveal">
+          <div class="skills-tabs">
+            <button class="tab-btn active custom-hover-trigger" data-filter="all">All Skills</button>
+            <button class="tab-btn custom-hover-trigger" data-filter="frontend">Frontend</button>
+            <button class="tab-btn custom-hover-trigger" data-filter="backend">Backend & DB</button>
+            <button class="tab-btn custom-hover-trigger" data-filter="tools">Tools & DevOps</button>
           </div>
         </div>
 
-        <!-- Automatic Consistency Matrix -->
-        <div class="control-box consistency-box">
-          <div class="consistency-header">
-            <h3>AUTOMATIC CONSISTENCY COMPARISON</h3>
-            <span class="tooltip-trigger" title="Scans global league databases for matches with matching physical signatures to ensure equal refereeing standard.">INFO</span>
+        <!-- Skills Grid -->
+        <div class="skills-grid">
+          <!-- Skill Card 1 (Frontend) -->
+          <div class="skill-card reveal" data-category="frontend">
+            <div class="skill-header">
+              <span class="skill-name">HTML5 & CSS3 / Modern Layouts</span>
+              <span class="skill-percent">95%</span>
+            </div>
+            <div class="skill-bar-outer">
+              <div class="skill-bar-inner" data-width="95%"></div>
+            </div>
+            <p class="skill-desc">Flexbox, Grid, CSS custom variables, modern layout models, animations.</p>
           </div>
-          <p class="section-desc">Identical matches in system database checking for precedent alignment:</p>
-          <div class="consistency-list" id="consistency-list">
-            <!-- Dynamically populated -->
+
+          <!-- Skill Card 2 (Frontend) -->
+          <div class="skill-card reveal" data-category="frontend">
+            <div class="skill-header">
+              <span class="skill-name">JavaScript (ES6+) / TypeScript</span>
+              <span class="skill-percent">90%</span>
+            </div>
+            <div class="skill-bar-outer">
+              <div class="skill-bar-inner" data-width="90%"></div>
+            </div>
+            <p class="skill-desc">DOM manipulation, closures, asynchronous code, event loops, type safety.</p>
+          </div>
+
+          <!-- Skill Card 3 (Frontend) -->
+          <div class="skill-card reveal" data-category="frontend">
+            <div class="skill-header">
+              <span class="skill-name">React.js & Next.js Frameworks</span>
+              <span class="skill-percent">88%</span>
+            </div>
+            <div class="skill-bar-outer">
+              <div class="skill-bar-inner" data-width="88%"></div>
+            </div>
+            <p class="skill-desc">SSR, dynamic routing, component life-cycle, context, custom hooks, global state.</p>
+          </div>
+
+          <!-- Skill Card 4 (Backend) -->
+          <div class="skill-card reveal" data-category="backend">
+            <div class="skill-header">
+              <span class="skill-name">Node.js / Express</span>
+              <span class="skill-percent">87%</span>
+            </div>
+            <div class="skill-bar-outer">
+              <div class="skill-bar-inner" data-width="87%"></div>
+            </div>
+            <p class="skill-desc">API creation, server structures, file systems, middleware, JWT auth, clusters.</p>
+          </div>
+
+          <!-- Skill Card 5 (Backend) -->
+          <div class="skill-card reveal" data-category="backend">
+            <div class="skill-header">
+              <span class="skill-name">Databases (SQL & NoSQL)</span>
+              <span class="skill-percent">85%</span>
+            </div>
+            <div class="skill-bar-outer">
+              <div class="skill-bar-inner" data-width="85%"></div>
+            </div>
+            <p class="skill-desc">PostgreSQL, MongoDB, schema designs, indexes, normalization, query optimizations.</p>
+          </div>
+
+          <!-- Skill Card 6 (Backend) -->
+          <div class="skill-card reveal" data-category="backend">
+            <div class="skill-header">
+              <span class="skill-name">Python / Fast-API</span>
+              <span class="skill-percent">80%</span>
+            </div>
+            <div class="skill-bar-outer">
+              <div class="skill-bar-inner" data-width="80%"></div>
+            </div>
+            <p class="skill-desc">API design, scripting, data extraction, clean structure, asynchronous programming.</p>
+          </div>
+
+          <!-- Skill Card 7 (Tools) -->
+          <div class="skill-card reveal" data-category="tools">
+            <div class="skill-header">
+              <span class="skill-name">Git & Collaborative Workflow</span>
+              <span class="skill-percent">92%</span>
+            </div>
+            <div class="skill-bar-outer">
+              <div class="skill-bar-inner" data-width="92%"></div>
+            </div>
+            <p class="skill-desc">Branching models, merge-resolves, pull-requests, actions, rebasing techniques.</p>
+          </div>
+
+          <!-- Skill Card 8 (Tools) -->
+          <div class="skill-card reveal" data-category="tools">
+            <div class="skill-header">
+              <span class="skill-name">Docker & Containerization</span>
+              <span class="skill-percent">78%</span>
+            </div>
+            <div class="skill-bar-outer">
+              <div class="skill-bar-inner" data-width="78%"></div>
+            </div>
+            <p class="skill-desc">Dockerfiles, compose files, multi-stage builds, container isolation, volume mounts.</p>
+          </div>
+
+          <!-- Skill Card 9 (Tools) -->
+          <div class="skill-card reveal" data-category="tools">
+            <div class="skill-header">
+              <span class="skill-name">CI/CD & Cloud Hosting (AWS/Vercel)</span>
+              <span class="skill-percent">82%</span>
+            </div>
+            <div class="skill-bar-outer">
+              <div class="skill-bar-inner" data-width="82%"></div>
+            </div>
+            <p class="skill-desc">GitHub Actions, Vercel deployments, AWS EC2 setups, static CDNs, automated checks.</p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+
+    <!-- 4. Projects Showcase Section -->
+    <section id="projects" class="projects-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">Projects</h2>
+          <div class="section-divider"></div>
+          <p class="section-subtitle">Some of my recent engineering designs, architectures, and applications</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project Card 1: Nebula Dashboard -->
+          <div class="project-card reveal custom-hover-trigger">
+            <div class="project-mockup">
+              <!-- Premium custom inline SVG vector mockup for dashboard -->
+              <svg viewBox="0 0 350 200" xmlns="http://www.w3.org/2000/svg" class="mockup-svg">
+                <rect width="350" height="200" rx="8" fill="var(--bg-primary)" stroke="var(--border-color)" stroke-width="1"/>
+                <!-- Top bar of the dashboard mockup -->
+                <path d="M 0,25 L 350,25" stroke="var(--border-color)" stroke-width="1"/>
+                <circle cx="15" cy="12" r="3" fill="#ff5f56" />
+                <circle cx="27" cy="12" r="3" fill="#ffbd2e" />
+                <circle cx="39" cy="12" r="3" fill="#27c93f" />
+                <rect x="60" y="8" width="80" height="9" rx="3" fill="var(--text-secondary)" opacity="0.2"/>
+                <circle cx="330" cy="12" r="4" fill="var(--accent-indigo)" />
+                <!-- Sidebar -->
+                <path d="M 50,25 L 50,200" stroke="var(--border-color)" stroke-width="1"/>
+                <rect x="10" y="35" width="30" height="6" rx="2" fill="var(--text-secondary)" opacity="0.3"/>
+                <rect x="10" y="50" width="30" height="6" rx="2" fill="var(--text-secondary)" opacity="0.15"/>
+                <rect x="10" y="65" width="30" height="6" rx="2" fill="var(--text-secondary)" opacity="0.15"/>
+                <rect x="10" y="80" width="30" height="6" rx="2" fill="var(--text-secondary)" opacity="0.15"/>
+                <!-- Main Grid content mock -->
+                <rect x="65" y="35" width="125" height="70" rx="4" fill="url(#mockup-grad-indigo)" opacity="0.15" />
+                <rect x="65" y="35" width="125" height="70" rx="4" fill="none" stroke="var(--accent-indigo)" stroke-width="1.5" />
+                <!-- Miniature Line Chart in block -->
+                <path d="M 75,90 Q 95,50 115,75 T 155,50 T 175,85" fill="none" stroke="var(--accent-indigo)" stroke-width="2" stroke-linecap="round"/>
+                
+                <rect x="200" y="35" width="135" height="70" rx="4" fill="var(--bg-secondary)" stroke="var(--border-color)" stroke-width="1" />
+                <!-- Bar chart mockup -->
+                <rect x="215" y="80" width="12" height="15" rx="1" fill="var(--accent-teal)" />
+                <rect x="235" y="60" width="12" height="35" rx="1" fill="var(--accent-teal)" />
+                <rect x="255" y="50" width="12" height="45" rx="1" fill="var(--accent-indigo)" />
+                <rect x="275" y="70" width="12" height="25" rx="1" fill="var(--accent-teal)" />
+                <rect x="295" y="55" width="12" height="40" rx="1" fill="var(--accent-indigo)" />
+                <rect x="315" y="40" width="12" height="55" rx="1" fill="var(--accent-indigo)" />
+                
+                <!-- Bottom content row mockup -->
+                <rect x="65" y="115" width="270" height="70" rx="4" fill="var(--bg-secondary)" stroke="var(--border-color)" stroke-width="1" />
+                <circle cx="95" cy="150" r="20" fill="none" stroke="var(--border-color)" stroke-width="4"/>
+                <circle cx="95" cy="150" r="20" fill="none" stroke="var(--accent-indigo)" stroke-width="4" stroke-dasharray="80 120" stroke-linecap="round"/>
+                <rect x="130" y="135" width="120" height="8" rx="2" fill="var(--text-primary)" opacity="0.6"/>
+                <rect x="130" y="150" width="170" height="6" rx="2" fill="var(--text-secondary)" opacity="0.4"/>
+                <rect x="130" y="162" width="90" height="6" rx="2" fill="var(--text-secondary)" opacity="0.4"/>
+                <!-- Definitions specifically for this card -->
+                <defs>
+                  <linearGradient id="mockup-grad-indigo" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="var(--accent-indigo)" />
+                    <stop offset="100%" stop-color="var(--accent-teal)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="project-info">
+              <div class="project-tags">
+                <span class="tech-badge">Next.js</span>
+                <span class="tech-badge">Recharts</span>
+                <span class="tech-badge">Tailwind</span>
+                <span class="tech-badge">SaaS</span>
+              </div>
+              <h3 class="project-card-title">Nebula Analytics</h3>
+              <p class="project-card-desc">
+                A high-performance analytics web dashboard integrating complex visual representation tools. Displays live servers, application status, user flows, and analytical predictions.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="Nebula Analytics Github Source">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="link-icon">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                  </svg>
+                  Source
+                </a>
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="Nebula Analytics Live Demo">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="link-icon">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                  Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 2: Cryptic Core API -->
+          <div class="project-card reveal custom-hover-trigger">
+            <div class="project-mockup">
+              <!-- Premium custom inline SVG vector mockup for backend flow -->
+              <svg viewBox="0 0 350 200" xmlns="http://www.w3.org/2000/svg" class="mockup-svg">
+                <rect width="350" height="200" rx="8" fill="var(--bg-primary)" stroke="var(--border-color)" stroke-width="1"/>
+                <path d="M 0,25 L 350,25" stroke="var(--border-color)" stroke-width="1"/>
+                <circle cx="15" cy="12" r="3" fill="#ff5f56" />
+                <circle cx="27" cy="12" r="3" fill="#ffbd2e" />
+                <circle cx="39" cy="12" r="3" fill="#27c93f" />
+                <text x="60" y="15" fill="var(--text-secondary)" font-family="Inter" font-size="8" font-weight="500" opacity="0.6">cryptic-core-api.log</text>
+                
+                <!-- Terminal coding background -->
+                <!-- Nodes represent servers/API layers -->
+                <rect x="20" y="45" width="80" height="30" rx="4" fill="var(--bg-secondary)" stroke="var(--accent-teal)" stroke-width="1"/>
+                <text x="28" y="62" fill="var(--accent-teal)" font-family="monospace" font-size="8">[Client API]</text>
+                
+                <rect x="250" y="45" width="80" height="30" rx="4" fill="var(--bg-secondary)" stroke="var(--accent-indigo)" stroke-width="1"/>
+                <text x="260" y="62" fill="var(--accent-indigo)" font-family="monospace" font-size="8">[Auth Micro]</text>
+                
+                <rect x="135" y="115" width="80" height="30" rx="4" fill="var(--bg-secondary)" stroke="var(--text-primary)" stroke-opacity="0.3" stroke-width="1"/>
+                <text x="143" y="132" fill="var(--text-primary)" font-family="monospace" font-size="8">[Secure DB]</text>
+                
+                <!-- Connecting pipelines -->
+                <path d="M 100,60 L 250,60" stroke="var(--border-color)" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round"/>
+                <circle cx="175" cy="60" r="4" fill="var(--accent-teal)" class="flowing-pulse-node" />
+                
+                <path d="M 60,75 L 60,130 L 135,130" fill="none" stroke="var(--border-color)" stroke-width="2" stroke-dasharray="4 4" />
+                <circle cx="60" cy="110" r="4" fill="var(--accent-indigo)" class="flowing-pulse-node-2" />
+                
+                <path d="M 290,75 L 290,130 L 215,130" fill="none" stroke="var(--border-color)" stroke-width="2" stroke-dasharray="4 4" />
+                
+                <!-- Overlay terminal console lines -->
+                <rect x="20" y="160" width="310" height="25" rx="3" fill="var(--bg-secondary)" opacity="0.7"/>
+                <text x="30" y="175" fill="#27c93f" font-family="monospace" font-size="7">~ $ curl -X GET https://api.cryptic.io/v1/health</text>
+                <text x="240" y="175" fill="var(--text-secondary)" font-family="monospace" font-size="7" opacity="0.8">{"status":"active", "latency":"8ms"}</text>
+              </svg>
+            </div>
+            <div class="project-info">
+              <div class="project-tags">
+                <span class="tech-badge">Node.js</span>
+                <span class="tech-badge">Express</span>
+                <span class="tech-badge">JWT Auth</span>
+                <span class="tech-badge">Redis</span>
+              </div>
+              <h3 class="project-card-title">Cryptic Core Gateway</h3>
+              <p class="project-card-desc">
+                A secure microservices gateway with JWT validation, sliding window rate limiter, dynamic routes caching, and active system service discovery configurations.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="Cryptic Core Github Source">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="link-icon">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                  </svg>
+                  Source
+                </a>
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="Cryptic Core Live Demo">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="link-icon">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                  Docs
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 3: Aura Music App -->
+          <div class="project-card reveal custom-hover-trigger">
+            <div class="project-mockup">
+              <!-- Premium custom inline SVG vector mockup for mobile app -->
+              <svg viewBox="0 0 350 200" xmlns="http://www.w3.org/2000/svg" class="mockup-svg">
+                <rect width="350" height="200" rx="8" fill="var(--bg-primary)" stroke="var(--border-color)" stroke-width="1"/>
+                <path d="M 0,25 L 350,25" stroke="var(--border-color)" stroke-width="1"/>
+                <circle cx="15" cy="12" r="3" fill="#ff5f56" />
+                <circle cx="27" cy="12" r="3" fill="#ffbd2e" />
+                <circle cx="39" cy="12" r="3" fill="#27c93f" />
+                
+                <!-- Mock mobile screen frame inside grid -->
+                <g transform="translate(120, 30)">
+                  <rect width="110" height="160" rx="10" fill="var(--bg-secondary)" stroke="var(--border-color)" stroke-width="1.5"/>
+                  <rect x="35" y="4" width="40" height="8" rx="4" fill="var(--bg-primary)" />
+                  
+                  <!-- Mobile content mockup -->
+                  <rect x="15" y="22" width="80" height="65" rx="6" fill="url(#mockup-grad-teal)" opacity="0.3"/>
+                  <rect x="15" y="22" width="80" height="65" rx="6" fill="none" stroke="var(--accent-teal)" stroke-width="1"/>
+                  <circle cx="55" cy="54" r="14" fill="var(--bg-secondary)" opacity="0.8" />
+                  <path d="M 52,48 L 62,54 L 52,60 Z" fill="var(--accent-teal)" />
+                  
+                  <rect x="15" y="98" width="80" height="8" rx="2" fill="var(--text-primary)" opacity="0.8"/>
+                  <rect x="15" y="110" width="50" height="5" rx="1" fill="var(--text-secondary)" opacity="0.5"/>
+                  
+                  <!-- Playback controls visual -->
+                  <circle cx="55" cy="138" r="10" fill="var(--accent-indigo)" />
+                  <path d="M 53,134 L 59,138 L 53,142 Z" fill="var(--bg-secondary)" />
+                  <circle cx="30" cy="138" r="6" fill="var(--text-secondary)" opacity="0.3" />
+                  <circle cx="80" cy="138" r="6" fill="var(--text-secondary)" opacity="0.3" />
+                  
+                  <line x1="15" y1="126" x2="95" y2="126" stroke="var(--border-color)" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="15" y1="126" x2="65" y2="126" stroke="var(--accent-teal)" stroke-width="2" stroke-linecap="round"/>
+                </g>
+                <defs>
+                  <linearGradient id="mockup-grad-teal" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="var(--accent-teal)" />
+                    <stop offset="100%" stop-color="var(--accent-indigo)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="project-info">
+              <div class="project-tags">
+                <span class="tech-badge">Web Audio</span>
+                <span class="tech-badge">TypeScript</span>
+                <span class="tech-badge">PWA</span>
+                <span class="tech-badge">CSS Variables</span>
+              </div>
+              <h3 class="project-card-title">Aura Spatial Sound</h3>
+              <p class="project-card-desc">
+                An immersive mobile-responsive audio application implementing 3D spatial sound manipulation using the browser's Web Audio API and responsive interface design.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="Aura Spatial Sound Source">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="link-icon">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                  </svg>
+                  Source
+                </a>
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="Aura Spatial Sound Live Demo">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="link-icon">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                  Demo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Experience Timeline Section -->
+    <section id="experience" class="experience-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">Experience & Education</h2>
+          <div class="section-divider"></div>
+          <p class="section-subtitle">My professional evolution and academic milestones</p>
+        </div>
+
+        <div class="timeline-container">
+          <div class="timeline-line"></div>
+          
+          <!-- Timeline Entry 1 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-node"></div>
+            <div class="timeline-content custom-hover-trigger">
+              <span class="timeline-date">2024 - Present</span>
+              <h3 class="timeline-role">Systems Software Engineer</h3>
+              <h4 class="timeline-org text-indigo">TechVanguard Solutions</h4>
+              <p class="timeline-text">
+                Leading the redesign of core backend service frameworks, migrating monolithic API setups into isolated Docker microservices, reducing query overheads by 35% through Redis structures, and mentoring junior team developers.
+              </p>
+            </div>
+          </div>
+
+          <!-- Timeline Entry 2 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-node"></div>
+            <div class="timeline-content custom-hover-trigger">
+              <span class="timeline-date">2022 - 2024</span>
+              <h3 class="timeline-role">Full-Stack Web Developer</h3>
+              <h4 class="timeline-org text-teal">DevCraft Labs</h4>
+              <p class="timeline-text">
+                Designed modular dashboard tools using Next.js, customized CSS layouts for fluid cross-browser UI, structured automated testing suites, and integrated payment gateways and user authorization procedures.
+              </p>
+            </div>
+          </div>
+
+          <!-- Timeline Entry 3 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-node"></div>
+            <div class="timeline-content custom-hover-trigger">
+              <span class="timeline-date">2018 - 2022</span>
+              <h3 class="timeline-role">Bachelor of Engineering (Computer Science)</h3>
+              <h4 class="timeline-org text-indigo">State Technical University</h4>
+              <p class="timeline-text">
+                Graduated with First Class Distinction. Developed algorithms for local routing systems, specialized in Database Engineering structures, and acted as lead developer for collegiate collaborative platforms.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Contact Section -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">Let's Connect</h2>
+          <div class="section-divider"></div>
+          <p class="section-subtitle">Have an opportunity, a project proposal, or just want to chat?</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Info Column -->
+          <div class="contact-info-panel reveal">
+            <h3 class="panel-headline">Reach Out Directly</h3>
+            <p class="panel-description">
+              I am open to contract roles, full-time positions, and interesting collaborative open-source opportunities. Send a message, and I'll respond within 24 hours.
+            </p>
+
+            <div class="info-list">
+              <div class="info-item">
+                <div class="info-icon-wrapper">
+                  <!-- Email icon -->
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="info-label">Email Me</span>
+                  <a href="mailto:hanisharadhyag@gmail.com" class="info-value custom-hover-trigger">hanisharadhyag@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon-wrapper">
+                  <!-- Location icon -->
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div>
+                  <span class="info-label">Based In</span>
+                  <span class="info-value">Bengaluru, Karnataka, India</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social handles grid -->
+            <div class="social-handles-container">
+              <span class="social-heading">Follow My Tracks</span>
+              <div class="social-icons">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn custom-hover-trigger" aria-label="Hanish Aradhya Github Profile">
+                  <!-- GitHub Icon -->
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                  </svg>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn custom-hover-trigger" aria-label="Hanish Aradhya LinkedIn Profile">
+                  <!-- LinkedIn Icon -->
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect width="4" height="12" x="2" y="9"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form Column -->
+          <div class="contact-form-wrapper reveal">
+            <form id="contact-form" class="contact-form" novalidate>
+              <div class="form-row">
+                <div class="input-group">
+                  <input type="text" id="form-name" required placeholder=" ">
+                  <label for="form-name">Full Name</label>
+                  <span class="error-msg" id="name-error">Please fill in your name</span>
+                </div>
+                
+                <div class="input-group">
+                  <input type="email" id="form-email" required placeholder=" ">
+                  <label for="form-email">Email Address</label>
+                  <span class="error-msg" id="email-error">Please enter a valid email</span>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <input type="text" id="form-subject" required placeholder=" ">
+                <label for="form-subject">Subject</label>
+                <span class="error-msg" id="subject-error">Please specify a subject</span>
+              </div>
+
+              <div class="input-group">
+                <textarea id="form-message" required placeholder=" " rows="5"></textarea>
+                <label for="form-message">Your Message</label>
+                <span class="error-msg" id="message-error">Message content cannot be blank</span>
+              </div>
+
+              <button type="submit" class="btn btn-primary form-submit-btn custom-hover-trigger" id="submit-btn">
+                <span>Send Message</span>
+                <!-- Send icon -->
+                <svg class="submit-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <p class="copyright">&copy; 2026 Hanish Aradhya G. All rights reserved.</p>
+      
+      <!-- Back to Top -->
+      <button class="back-to-top-btn custom-hover-trigger" id="back-to-top" aria-label="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m18 15-6-6-6 6"></path>
+        </svg>
+      </button>
     </div>
+  </footer>
 
-    <!-- Bottom Section: Publicly Auditable Ledger / Blockchain Log -->
-    <footer class="ledger-footer">
-      <div class="ledger-header">
-        <div class="ledger-title-group">
-          <span class="pulse-indicator pulse-blue"></span>
-          <h3>PUBLICLY AUDITABLE CRYPTOGRAPHIC DECISION LOG (IMMUTABLE LEDGER)</h3>
-        </div>
-        <div class="ledger-stats">
-          <span>CHAIN SYNCED: <strong class="text-green">BLOCK #849,102</strong></span>
-          <span class="separator">|</span>
-          <span>LEDGER STATUS: <strong class="text-green">VERIFIED SECURE</strong></span>
-        </div>
-      </div>
-      <div class="ledger-log-window" id="ledger-log-window">
-        <!-- Dynamically populated with transaction logs containing cryptographic hashes -->
-      </div>
-    </footer>
-  </div>
-  
-  <script src="app.js"></script>
+  <!-- Toast Notification Overlay -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- JavaScript logic -->
+  <script src="js/script.js"></script>
 </body>
 </html>
